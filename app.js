@@ -154,7 +154,8 @@ app.post('/users/insert/', verifyToken, (req, res) => {
             res.status(201).json({ message: 'User created successfully.', itemId: this.lastID });
         });
     } catch (E) {
-        res.status(400).send(E);
+        console.error(E);
+        res.status(400).send("Bad Request.");
     }
 });
 
@@ -170,7 +171,8 @@ app.get('/users/view/', verifyToken, (req, res) => {
             res.status(201).json({ "data": rows });
         });
     } catch (E) {
-        res.status(400).send(E);
+        console.error(E);
+        res.status(400).send("Bad Request.");
     }
 });
 
@@ -193,7 +195,8 @@ app.get('/users/view/:id', verifyToken, (req, res) => {
             res.json({ "data": rows });
         });
     } catch (E) {
-        res.status(400).send(E);
+        console.error(E);
+        res.status(400).send("Bad Request.");
     }
 });
 
