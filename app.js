@@ -231,7 +231,8 @@ app.put('/users/modify/:id', verifyToken, (req, res) => {
             res.json({ message: 'User updated successfully.', itemId: id });
         });
     } catch (E) {
-        res.status(400).send(E);
+        console.error('Exception in PUT /users/modify/:id:', E);
+        res.status(500).json({ error: 'Internal server error.' });
     }
 });
 
