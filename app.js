@@ -11,7 +11,7 @@ const db = require('./database.js');
 // Cross Origin Resource Sharing
 const cors = require('cors');
 // middleware for cors
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: process.env.FRONTEND_URL }));
 
 // middleware to handle urlencoded data
 // 'content-type: application/x-www-form-urlencoded'
@@ -266,3 +266,4 @@ app.delete('/items/:id', verifyToken, (req, res) => {
 app.listen(port, hostname, () => {
     console.log(`Server is running on http://${hostname}:${port}/`);
 });
+
