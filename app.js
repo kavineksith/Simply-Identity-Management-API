@@ -253,7 +253,8 @@ app.delete('/items/:id', verifyToken, (req, res) => {
             res.json({ message: 'User deleted successfully.', itemId: id });
         });
     } catch (E) {
-        res.status(400).send(E);
+        console.error('Exception in DELETE /items/:id:', E);
+        res.status(500).json({ error: 'Internal server error.' });
     }
 });
 
